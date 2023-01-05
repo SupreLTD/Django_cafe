@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>{% block title %} Наше любимое кафе {% endblock %}</title>
+</head>
+<body>
+
+    <div class="container py-3">
+
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/cafe_core_app" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Cafe</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/cafe_core_app">Меню</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/analytics/top_meals">Топ 3 блюда</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/analytics/charts/">Статистика переходов</a>
+
+      </nav>
+        <a class="btn btn-outline-primary" href="/admin">Admin</a>
+    </div>
+
+
+    {% block content %} Вы пришли в наше любимое кафе {% endblock %}
+    </div>
+</body>
+</html>

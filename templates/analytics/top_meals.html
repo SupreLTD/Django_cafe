@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title %} Топ 3 блюда {% endblock %}
+
+{% block content %}
+    {% if meals  %}
+        {% for meal in meals %}
+            {% if meal.cnt != 0%}
+            <p><b>{{ meal.name }}: </b>{{ meal.cnt }} кликов</p>
+            {% endif %}
+
+        {% endfor %}
+    {% else %}
+        Пусто
+    {% endif %}
+
+{% endblock %}

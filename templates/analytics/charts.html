@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block title %} {{ meal_category }} {% endblock %}
+
+{% block content %}
+    {% if meals %}
+        {% for meal in meals %}
+            <h5><a href="{% url 'analytics:chart' meal.id %}"> {{ meal.name}}</a></h5>
+        {% endfor %}
+    {% else %}
+        Пусто
+    {% endif %}
+{% endblock %}

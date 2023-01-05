@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block title %} {{ meal_category }} {% endblock %}
+
+{% block content %}
+    {% if meals %}
+        {% for meal in meals %}
+            <h2><a href="{% url 'cafe_core_app:meal' meal.id %}"> {{ meal.name }}</a></h2>
+        {% endfor %}
+    {% else %}
+        Пусто
+    {% endif %}
+{% endblock %}
