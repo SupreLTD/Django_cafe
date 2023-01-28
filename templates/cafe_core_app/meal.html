@@ -1,14 +1,58 @@
-{% extends 'index.html' %}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block title %} {{ meal.name }} {% endblock %}
+{% block bg_image %}{% static 'images/elements.jpg' %}{% endblock bg_image %}
 
 {% block content %}
     {% if meal %}
-        <p><b>Блюдо: </b>{{ meal.name }}</p>
-        <p><b>Описание: </b>{{ meal.description }}</p>
-        <p><b>Цена: </b>{{ meal.price }} BYN</p>
-        <p><b>Размер: </b>{{ meal.size }}</p>
+        <!-- Signature Dishes -->
+
+	<div class="sig">
+		<div class="container">
+
+					<!-- Signature Dish -->
+					<div class="sig_dish">
+						<div class="row row-eq-height">
+							<div class="col-lg-6 sig_col d-flex flex-column align-items-start justify-content-center">
+								<div class="sig_content">
+									<div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
+									<div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
+										<div class="sig_name">{{ meal.name }}</div>
+										<div class="sig_price ml-auto">{{meal.price }} BYN</div>
+
+									</div>
+                                    <div class="sig_price ml-auto">{{meal.size }} Грамм</div>
+									<div class="sig_content_list">
+										<ul class="d-flex flex-row align-items-center justify-content-start">
+											<li>{{ meal.description }}</li>
+
+										</ul>
+									</div>
+																	</div>
+							</div>
+                        <div class="col-lg-6 sig_col">
+
+                            {% for image in meal.images.all %}
+
+
+								<div class="sig_image"><img src="{{ image.image.url }}" alt="" width="500" height="300"></div><br>
+
+                                {% endfor %}
+							</div>
+
+						</div>
+					</div>
+
+
+
+		</div>
+	</div>
     {% else %}
         Пусто
     {% endif %}
 {% endblock %}
+  <p><b>Блюдо: </b>{{ meal.name }}</p>
+        <p><b>Описание: </b>{{ meal.description }}</p>
+        <p><b>Цена: </b>{{ meal.price }} BYN</p>
+        <p><b>Размер: </b>{{ meal.size }}</p>
+        {{ meal.imagemeal_set.all }}

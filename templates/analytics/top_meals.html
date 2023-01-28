@@ -1,17 +1,31 @@
-{% extends 'index.html' %}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block title %} Топ 3 блюда {% endblock %}
+{% block bg_image %}{% static 'images/blog.jpg' %}{% endblock bg_image %}
+{% block home_title %}Топ 3 блюда{% endblock home_title %}
 
 {% block content %}
+<br><br><br><br><br><br>
     {% if meals  %}
         {% for meal in meals %}
-            {% if meal.cnt != 0%}
-            <p><b>{{ meal.name }}: </b>{{ meal.cnt }} кликов</p>
-            {% endif %}
+
+		<div class="container">
+					<div class="sig_dish">
+							<div class="col-lg-6 sig_col d-flex flex-column align-items-start justify-content-center">
+								<div class="sig_content">
+                                    <div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
+
+										<div class="sig_name">{{ meal.name }}</div>
+										<div class="sig_price ml-auto">{{meal.cnt }}  Клик(ов)</div>
+									</div>
+							    </div>
+					        </div>
+		            </div>
+	    </div>
 
         {% endfor %}
     {% else %}
         Пусто
     {% endif %}
-
+<br><br><br><br><br><br>
 {% endblock %}

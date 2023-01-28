@@ -1,12 +1,51 @@
-{% extends 'index.html' %}
-
-{% block title %} {{ meal_category }} {% endblock %}
-
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ title.name }} {% endblock %}
+{% block bg_image %}{% static 'images/reservations.jpg' %}{% endblock bg_image %}
+{% block home_title %}Меню{% endblock home_title %}
 {% block content %}
+    <div class="sig">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title_container">
+						<div class="section_subtitle page_subtitle">Something new</div>
+						<div class="section_title"><h1>{{ title.name }}</h1></div>
+					</div>
+				</div>
+			</div>
+			<div class="row sig_row">
+				<div class="col">
     {% if meals %}
         {% for meal in meals %}
-            <h2><a href="{% url 'cafe_core_app:meal' meal.id %}"> {{ meal.name }}</a></h2>
-        {% endfor %}
+            <div class="sig_dish">
+						<div class="row row-eq-height">
+							<div class="col-lg-6 sig_col d-flex flex-column align-items-start justify-content-center">
+								<div class="sig_content">
+									<div class="rating_r sig_rating rating_r_5"><i></i><i></i><i></i><i></i><i></i></div>
+									<div class="sig_name_container d-flex flex-row align-items-start justify-content-start">
+										<div class="sig_name">{{ meal.name }}</div>
+
+									</div>
+									<div class="sig_content_list">
+
+									</div>
+									<div class="button sig_button trans_200"><a href="{% url 'cafe_core_app:meal' meal.id %}">Подробнее</a></div>
+{#                                    {{ meal.imagemeal_set.all }}#}
+								</div>
+							</div>
+{#                            <div class="col-lg-6 sig_col">#}
+{#								<div class="sig_image"><img src="{{ meal__image.url}}" alt=""></div>#}
+{#							</div>#}
+						</div>
+					</div>
+
+                        {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
     {% else %}
         Пусто
     {% endif %}

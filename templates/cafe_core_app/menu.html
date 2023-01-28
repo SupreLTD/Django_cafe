@@ -1,13 +1,39 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Меню {% endblock %}
+{% block bg_image %}{% static 'images/menu.jpg' %}{% endblock bg_image %}
+{% block home_title %}Меню{% endblock home_title %}
 
 {% block content %}
-    {% if meal_categories %}
+
+            <!-- The Menu -->
+
+	<div class="themenu">
+		<div class="container">
+
+			<div class="row themenu_row">
+                {% if meal_categories %}
         {% for category in meal_categories %}
-            <h2><a href="{% url 'cafe_core_app:meal_category' category.1%}"> {{ category.0 }}</a></h2>
+
+				<!-- Starters -->
+				<div class="col-lg-4 themenu_column">
+					<div class="themenu_image"><img src="{{ category.image.url }}" alt="" width="350" height="324.5"></div>
+					<div class="themenu_col trans_400">
+						<a href="{% url 'cafe_core_app:meal_category' category.url%}" class="themenu_col_title">{{ category.name }}</a>
+
+
+					</div>
+				</div>
+
         {% endfor %}
-    {% else %}
+        {% else %}
         Нет категории блюд
     {% endif %}
+
+			</div>
+		</div>
+	</div>
+
 {% endblock %}
+<h2><a href="{% url 'cafe_core_app:meal_category' category.1%}"> {{ category.0 }}</a></h2>
